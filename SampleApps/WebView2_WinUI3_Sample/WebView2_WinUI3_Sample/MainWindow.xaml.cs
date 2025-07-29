@@ -42,7 +42,7 @@ namespace WebView2_WinUI3_Sample
             WebView2.NavigationCompleted += WebView2_NavigationCompleted;
             WebView2.CoreWebView2Initialized += WebView2_CoreWebView2Initialized;
 
-            WebView2.Source = new Uri(AddressBar.Text);
+            WebView2.Source = new Uri(@"https://appassets.example/index.html");
             StatusUpdate("Ready");
             SetTitle();
         }
@@ -62,6 +62,7 @@ namespace WebView2_WinUI3_Sample
             else
             {
                 SetTitle(sender);
+                WebView2.CoreWebView2.SetVirtualHostNameToFolderMapping("appassets.example", "html", CoreWebView2HostResourceAccessKind.Allow);
             }
         }
 
